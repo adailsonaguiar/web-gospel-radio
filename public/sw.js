@@ -1,4 +1,5 @@
 const CACHE_NAME = 'my_cache'
+
 self.addEventListener('install', (event) => {
     console.log('Install service worker...')
 
@@ -7,4 +8,8 @@ self.addEventListener('install', (event) => {
             return cache.addAll(['/index.html']).then(() => self.skipWaiting())
         })
     )
+})
+
+self.addEventListener('fetch', (event) => {
+    console.log('Fetch event', event.request.url)
 })
